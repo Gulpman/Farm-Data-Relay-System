@@ -8,12 +8,14 @@
 //
 
 // compile error when defined here - why?
-#define USE_LORA
+//#define USE_LORA
 //#define USE_ESPNOW
 
 #include "Arduino.h"
 #include "fdrs_sensor_config.h"
 #include "FDRS_Sensor/fdrs_sensor.h"
+// cpp must be included as well, otherwise we get a "undefined reference to vtable error". See answer of iammilind at https://stackoverflow.com/questions/3065154/undefined-reference-to-vtable
+//#include "FDRS_Sensor/fdrs_sensor.cpp"
 
 #if defined(USE_LORA)
 FDRSLoRa FDRS(GTWY_MAC,READING_ID,SPI_MISO,SPI_MOSI,SPI_SCK,LORA_SS,LORA_RST,LORA_DIO0,FDRS_BAND,FDRS_SF);
