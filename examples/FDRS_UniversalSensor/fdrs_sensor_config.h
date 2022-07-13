@@ -18,6 +18,7 @@
 #define DEEP_SLEEP
 //#define POWER_CTRL    14
 
+// ToDO: Leads to a compile error atm! Check how this setting can be set here. Must be done in fdrs_sensor.cpp currently.
 // Uncomment the sensor type you want to use 
 //#define USE_LORA
 //#define USE_ESPNOW

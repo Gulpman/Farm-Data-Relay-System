@@ -13,6 +13,7 @@
 #include "fdrs_types.h"
 #include "fdrs_datatypes.h"
 
+//ToDo: Shouldn't FDRS_DEBUG the right way to do this? Why an extra ENABLE_DEBUG?
 //1 to enable debugging prints. 0 disables the debugging prints
 #define ENABLE_DEBUG 1 
 
@@ -40,20 +41,20 @@
 #endif
 
 #ifdef FDRS_GLOBALS
-
-//#ifdef FDRS_GLOBAL_LORA
+#ifdef FDRS_GLOBAL_LORA
 #define FDRS_BAND GLOBAL_LORA_BAND
 #define FDRS_SF GLOBAL_LORA_SF
 #else
 #define FDRS_BAND LORA_BAND
 #define FDRS_SF LORA_SF
-#endif //FDRS_GLOBAL_LORA
+#endif FDRS_GLOBAL_LORA
+#endif FDRS_GLOBALS
 
 #ifdef FDRS_DEBUG
 #define DBG(a) (Serial.println(a))
 #else
 #define DBG(a)
-#endif
+#endif 
 
 extern const uint8_t prefix[5];
 
