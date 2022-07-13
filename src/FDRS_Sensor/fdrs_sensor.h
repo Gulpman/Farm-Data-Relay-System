@@ -9,8 +9,9 @@
 #ifndef  __FDRS_SENSOR__H__
 #define __FDRS_SENSOR__H__
 
+#include "Arduino.h"
 #include "fdrs_types.h"
-#include <fdrs_datatypes.h>
+#include "fdrs_datatypes.h"
 
 //1 to enable debugging prints. 0 disables the debugging prints
 #define ENABLE_DEBUG 1 
@@ -21,6 +22,7 @@
 #endif
 #endif
 
+// ToDo: Check why the define must be configured here! This is a user setting and must not be configured here.
 #define USE_LORA
 //#define USE_ESPNOW
 
@@ -109,7 +111,7 @@ private:
   DataReading_t *fdrsData;
 
   /**
-   * @brief Required impalamnetation of a paticulare sensors initialization.
+   * @brief Required implementation of a paticulare sensors initialization.
    */
   virtual void init(void) = 0;
 

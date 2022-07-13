@@ -7,6 +7,8 @@
 #ifndef  __FDRS_SENSOR_CONFIG__H__
 #define __FDRS_SENSOR_CONFIG__H__
 
+#include "Arduino.h"
+
 #define FDRS_DEBUG 			// Comment, if you do not want to see debug messages
 #include <fdrs_globals.h> 	// Comment if you want to set specific values for this sensor here
 
