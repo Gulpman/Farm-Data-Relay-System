@@ -50,10 +50,10 @@ Buffers can hold a maximum of 256 DataReadings.
 
 
 
-![Basic](/FDRS_Gateway/Basic_Setup.png)
+![Basic](/extras/FDRS_Gateway/Basic_Setup.png)
 
-![Advanced](/FDRS_Gateway/Advanced_Setup.png)
+![Advanced](/extras/FDRS_Gateway/Advanced_Setup.png)
 
-![Basic LoRa](/FDRS_Gateway/Basic_LoRa_Setup.png)
+![Basic LoRa](/extras/FDRS_Gateway/Basic_LoRa_Setup.png)
 
-![Advanced LoRa](/FDRS_Gateway/Advanced_Setup_LoRa.png)
+![Advanced LoRa](/extras/FDRS_Gateway/Advanced_Setup_LoRa.png)
