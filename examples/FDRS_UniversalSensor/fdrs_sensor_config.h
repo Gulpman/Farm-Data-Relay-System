@@ -53,4 +53,4 @@
 //#define MQTT_USER   "Your MQTT Username"
 //#define MQTT_PASS   "Your MQTT Password"
 
-#endif __FDRS_SENSOR_CONFIG__H__
+#endif //__FDRS_SENSOR_CONFIG__H__

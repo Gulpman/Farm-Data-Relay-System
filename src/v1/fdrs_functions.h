@@ -3,6 +3,11 @@
 //  GATEWAY 2.000 Functions
 //  This is the 'meat and potatoes' of FDRS, and should not be fooled with unless improving/adding features.
 //  Developed by Timm Bogner (timmbogner@gmail.com)
+
+#ifndef __FDRS_FUNCTIONS_H__
+#define __FDRS_FUNCTIONS_H__
+
+
 enum {
   event_clear,
   event_espnowg,
@@ -571,7 +576,7 @@ void releaseLoRa(uint8_t interface) {
         break;
       }
   }
-#endif
+#endif //USE_LORA
 }
 void releaseSerial() {
   DBG("Releasing Serial.");
@@ -598,7 +603,7 @@ void releaseMQTT() {
   serializeJson(doc, outgoingString);
   mqtt_publish((char*) outgoingString.c_str());
   lenMQTT = 0;
-#endif
+#endif //USE_WIFI
 }
 void begin_espnow() {
   DBG("Initializing ESP-NOW!");
@@ -616,10 +621,10 @@ void begin_espnow() {
   // Register peers
 #ifdef ESPNOW1_PEER
   esp_now_add_peer(ESPNOW1, ESP_NOW_ROLE_COMBO, 0, NULL, 0);
-#endif
+#endif //ESPNOW1_PEER
 #ifdef ESPNOW2_PEER
   esp_now_add_peer(ESPNOW2, ESP_NOW_ROLE_COMBO, 0, NULL, 0);
-#endif
+#endif //ESPNOW2_PEER
 #elif defined(ESP32)
   esp_wifi_set_mac(WIFI_IF_STA, &selfAddress[0]);
   if (esp_now_init() != ESP_OK) {
@@ -644,15 +649,15 @@ void begin_espnow() {
     DBG("Failed to add peer 1");
     return;
   }
-#endif
+#endif //ESPNOW1_PEER
 #ifdef ESPNOW2_PEER
   memcpy(peerInfo.peer_addr, ESPNOW2, 6);
   if (esp_now_add_peer(&peerInfo) != ESP_OK) {
     DBG("Failed to add peer 2");
     return;
   }
-#endif
-#endif
+#endif //ESPNOW2_PEER
+#endif //ESP8266
   DBG(" ESP-NOW Initialized.");
 }
 void begin_lora() {
@@ -660,7 +665,7 @@ void begin_lora() {
   DBG("Initializing LoRa!");
 #ifdef ESP32
   SPI.begin(SPI_SCK, SPI_MISO, SPI_MOSI);
-#endif
+#endif //ESP32
   LoRa.setPins(LORA_SS, LORA_RST, LORA_DIO0);
   if (!LoRa.begin(FDRS_BAND)) {
     DBG(" Initialization failed!");
@@ -668,21 +673,21 @@ void begin_lora() {
   }
   LoRa.setSpreadingFactor(FDRS_SF);
   DBG(" LoRa initialized.");
-#endif
+#endif //USE_LORA
 }
 void begin_SD() {
 #ifdef USE_SD_LOG
   DBG("Initializing SD card...");
 #ifdef ESP32
   SPI.begin(SCK, MISO, MOSI);
-#endif
+#endif //ESP32
   if (!SD.begin(SD_SS)) {
     DBG(" Initialization failed!");
     while (1);
   } else {
     DBG(" SD initialized.");
   }
-#endif
+#endif //USE_SD_LOG
 }
 void begin_FS() {
 #ifdef USE_FS_LOG
@@ -697,5 +702,7 @@ void begin_FS() {
   {
     DBG(" LittleFS initialized");
   }
-#endif
+#endif //USE_FS_LOG
 }
+
+#endif //__FDRS_FUNCTIONS_H__

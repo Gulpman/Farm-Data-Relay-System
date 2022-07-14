@@ -24,7 +24,7 @@
 #endif
 
 // ToDo: Check why the define must be configured here! This is a user setting and must not be configured here.
-#define USE_LORA
+//#define USE_LORA
 //#define USE_ESPNOW
 
 #if defined(ESP8266)
@@ -47,8 +47,8 @@
 #else
 #define FDRS_BAND LORA_BAND
 #define FDRS_SF LORA_SF
-#endif FDRS_GLOBAL_LORA
-#endif FDRS_GLOBALS
+#endif //FDRS_GLOBAL_LORA
+#endif //FDRS_GLOBALS
 
 #ifdef FDRS_DEBUG
 #define DBG(a) (Serial.println(a))
