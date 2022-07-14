@@ -24,7 +24,7 @@
 #endif
 
 // ToDo: Check why the define must be configured here! This is a user setting and must not be configured here.
-//#define USE_LORA
+#define USE_LORA
 //#define USE_ESPNOW
 
 #if defined(ESP8266)
